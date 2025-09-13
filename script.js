@@ -10,7 +10,8 @@ let mousePos = {x: 0, y: 0};
 function drawCircle(numPoints) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  const radius = 250;
+  // Ajusta el radio para que 200 puntillas se vean bien
+  const radius = Math.min(canvas.width, canvas.height) / 2 - 30;
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
 
@@ -49,12 +50,12 @@ function drawCircle(numPoints) {
     ctx.arc(pt.x, pt.y, 6, 0, 2 * Math.PI);
     ctx.fill();
 
-    // texto
+    // texto más pequeño para muchos puntos
     ctx.fillStyle = "#5a2d82"; // morado oscuro
-    ctx.font = "12px Poppins";
+    ctx.font = "8px Poppins";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(i + 1, pt.x + 15 * Math.cos((i / points.length) * 2 * Math.PI), pt.y + 15 * Math.sin((i / points.length) * 2 * Math.PI));
+    ctx.fillText(i + 1, pt.x + 10 * Math.cos((i / points.length) * 2 * Math.PI), pt.y + 10 * Math.sin((i / points.length) * 2 * Math.PI));
   }
 
   // Si hay un punto seleccionado, dibujar línea transparente al mouse
